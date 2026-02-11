@@ -1,0 +1,31 @@
+
+spring:
+  application:
+    name: crypto-keygen-demo
+  data:
+    redis:
+      host: localhost
+      port: 6379
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,metrics,info
+
+crypto:
+  keygen:
+    fips-mode: true
+    min-aes-key-size: 128
+    min-rsa-key-size: 2048
+    correlation-header: X-Correlation-Id
+    prefer-redis-rate-limiter: true
+    ban-private-export: true
+    allowed-curves: ["secp256r1","secp384r1","secp521r1"]
+
+# Example cloud configs (uncomment to enable)
+#crypto:
+#  keygen:
+#    kms:
+#      key-id: arn:aws:kms:us-east-1:111122223333:key/your-key-id
+#    keyvault:
+#      key-id: https://your-vault.vault.azure.net/keys/your-key/your-version
