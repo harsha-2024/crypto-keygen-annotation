@@ -1,0 +1,23 @@
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:crypto;DB_CLOSE_DELAY=-1;MODE=LEGACY
+    username: sa
+    password: ""
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+
+crypto:
+  keygen:
+    fips-mode: true
+    min-aes-key-size: 128
+    min-rsa-key-size: 2048
+    correlation-header: X-Correlation-Id
+
+logging:
+  level:
+    root: INFO
+    com.example.crypto: DEBUG
